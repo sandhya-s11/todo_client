@@ -15,7 +15,7 @@ const TodoList = () => {
 
   // 🔹 Fetch Todos
   const fetchTodos = async () => {
-    const res = await axios.get("http://localhost:5000/csbs/gettodo");
+    const res = await axios.get("https://todo-server-ec2-owbb.onrender.com/csbs/gettodo");
     setTodos(res.data);
   };
 
@@ -23,12 +23,12 @@ const TodoList = () => {
   const handleSubmit = async () => {
     if (editId) {
       await axios.put(
-        `http://localhost:5000/csbs/updatetodo/${editId}`,
+        `https://todo-server-ec2-owbb.onrender.com/csbs/updatetodo/${editId}`,
         { todo }
       );
       setEditId(null);
     } else {
-      await axios.post("http://localhost:5000/csbs/addtodo", { todo });
+      await axios.post("https://todo-server-ec2-owbb.onrender.com/csbs/addtodo", { todo });
     }
 
     setTodo("");
@@ -39,7 +39,7 @@ const TodoList = () => {
 
   // 🔹 Delete Todo
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/csbs/deletetodo/${id}`);
+    await axios.delete(`https://todo-server-ec2-owbb.onrender.com/csbs/deletetodo/${id}`);
     fetchTodos();
   };
 
